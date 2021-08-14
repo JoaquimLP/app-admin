@@ -49,4 +49,15 @@
             </form>
         </div>
     </div>
+    <div class="card my-2">
+        <div class="card-header">
+            <h2 class="card-title">Produtos</h2>
+        </div>
+        <div class="card-body">
+            @include('admin.empresa.estoque.estoque-empresa')
+        </div>
+        <div class="card-footer clearfix">
+
+        </div>
+    </div>
 @endsection

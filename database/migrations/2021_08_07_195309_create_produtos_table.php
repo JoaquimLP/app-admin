@@ -17,9 +17,6 @@ class CreateProdutosTable extends Migration
             $table->id();
             $table->string('nome')->unique();
             $table->text('descricao')->nullable();
-            //$table->double('qtd', 10,2)->nullable();
-            //$table->double('valor_compra', 10,2)->nullable();
-            //$table->double('valor_venda', 10,2)->nullable();
             $table->enum('status_id', ['A', 'I'])->default("A");
             $table->timestamps();
         });
