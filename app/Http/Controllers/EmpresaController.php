@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateEmpresaRequest;
 use App\Models\Empresa;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
     private $empresa;
+    private $produto;
 
-    public function __construct(Empresa $empresa)
+    public function __construct(Empresa $empresa, Produto $produto)
     {
         $this->empresa = $empresa;
+        $this->produto = $produto;
     }
 
 

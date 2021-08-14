@@ -26,11 +26,17 @@ class Empresa extends Model
 
     public static function getClient($id)
     {
-        return self::where('id', $id)->where('status_id', "A")->first();
+        return self::where('id', $id)->where('status_id', "A")->with(['estoque', 'estoque.produto'])->first();
+    }
+
+    public function estoque()
+    {
+        return $this->hasMany(Estoque::class);
     }
 
     public static function getSerchTipo($tipo = null, $nome = null)
     {
         return self::where('tipo', $tipo)->where('nome', 'LIKE', "%{$nome}%")->where('status_id', "A")->get();
     }
+
 }

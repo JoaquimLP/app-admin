@@ -15,7 +15,7 @@ class CreateEstoquesTable extends Migration
     {
         Schema::create('estoques', function (Blueprint $table) {
             $table->id();
-            $table->enum('tipo', ['A', 'I']);
+            $table->enum('tipo', ['E', 'S']);
             $table->double('qtd', 10,2)->nullable();
             $table->double('valor', 10,2)->nullable();
             $table->enum('status_id', ['A', 'I'])->default("A");

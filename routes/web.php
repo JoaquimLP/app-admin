@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\{
     EmpresaController,
+    EstoqueController,
     FinanceiroController,
     HomeController,
     ProdutoController,
@@ -72,4 +73,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::delete('/empresa/financeiro/{id}/destroy', [FinanceiroController::class, 'destroy'])->name('financeiro.destroy');
     Route::any('/empresa/financeiro/search', [FinanceiroController::class, 'search'])->name('financeiro.search');
     Route::post('/empresa/financeiro/buscar', [FinanceiroController::class, 'empresa'])->name('financeiro.empresa');
+
+    Route::post('/empresa/estoque/store/{id}', [EstoqueController::class, 'store'])->name('estoque.store');
+    Route::post('/empresa/estoque/buscar', [EstoqueController::class, 'produto'])->name('estoque.produto');
+    Route::delete('/empresa/estoque/{id}/destroy', [EstoqueController::class, 'destroy'])->name('estoque.destroy');
 });

@@ -33,4 +33,9 @@ class Produto extends Model
     {
         return self::where('id', $filter )->orWhere('nome', 'LIKE', "%{$filter}%")->where('status_id', "A")->simplePaginate(15);
     }
+
+    public static function getSerchProduto($nome = null)
+    {
+        return self::where('nome', 'LIKE', "%{$nome}%")->where('status_id', "A")->get();
+    }
 }

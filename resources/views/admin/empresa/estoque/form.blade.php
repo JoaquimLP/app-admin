@@ -1,7 +1,6 @@
 <div class="col-md-6 my-1">
-    <label for="qtd" class="form-label">Produto*</label>
-    <select name="produto_id" id="produto_id" class="form-control @error('produto_id') is-invalid @enderror">
-
+    <label for="produto_id" class="form-label">Produto*</label>
+    <select name="produto_id" id="produto_id" class="form-control @error('produto_id') is-invalid @enderror" style="width: 100%;">
     </select>
     @error('produto_id')
         <div class="invalid-feedback">
@@ -11,7 +10,7 @@
 </div>
 <div class="col-md-3 my-1">
     <label for="qtd" class="form-label">Quantidade (KG)*</label>
-    <input type="text" class="form-control @error('qtd') is-invalid @enderror" value="{{old('qtd', $empresa->qtd ?? '')}}" name="qtd" id="qtd">
+    <input type="text" class="form-control dinheiro @error('qtd') is-invalid @enderror" value="{{old('qtd', $empresa->qtd ?? '')}}" name="qtd" id="qtd">
     @error('qtd')
         <div class="invalid-feedback">
             {{ $message }}
@@ -19,9 +18,9 @@
     @enderror
 </div>
 <div class="col-md-3 my-1">
-    <label for="preco" class="form-label">Valor (KG)*</label>
-    <input type="text" class="form-control dinheiro @error('preco') is-invalid @enderror" value="{{old('preco', isset($financeiro->preco) ? maskDinheiro($financeiro->preco) : '')}}" name="preco" placeholder="00,00" id="preco">
-    @error('preco')
+    <label for="valor" class="form-label">Valor (KG)*</label>
+    <input type="text" class="form-control dinheiro @error('valor') is-invalid @enderror" value="{{old('valor', isset($financeiro->valor) ? maskDinheiro($financeiro->valor) : '')}}" name="valor" placeholder="00,00" id="valor">
+    @error('valor')
         <div class="invalid-feedback">
             {{ $message }}
         </div>
@@ -36,17 +35,16 @@
     $(document).ready(function($){
         $('.dinheiro').mask('#.###,00', {reverse: true});
 
-        /* $('#empresa_id').select2({
+        $('#produto_id').select2({
             ajax: {
                 type: 'post',
-                url: '{{ route("financeiro.empresa") }}',
+                url: '{{ route("estoque.produto") }}',
                 dataType: "json",
                 delay: 250,
                 data: function (params) {
                     var query = {
                         nome: params.term,
                         type: 'public',
-                        tipo: $('[name=tipo]').val(),
                     }
                     // Query parameters will be ?search=[term]&type=public
                     return query;
@@ -62,7 +60,7 @@
                     };
                 },
             }
-        }); */
+        });
 });
 </script>
 @endpush
