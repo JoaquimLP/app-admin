@@ -28,7 +28,7 @@ class Empresa extends Model
     {
         return self::where('id', $id)->where('status_id', "A")
             ->with(['estoque' => function ($query){
-                $query->latest()->take(5);
+                $query->where('status_id', "A")->latest()->take(5);
             },
             'estoque.produto'])->first();
     }
