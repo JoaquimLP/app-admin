@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateEmpresaRequest;
 use App\Models\Empresa;
-use App\Models\Produto;
+use App\Models\Saldo;
 use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
     private $empresa;
-    private $produto;
+    private $saldo;
 
-    public function __construct(Empresa $empresa, Produto $produto)
+    public function __construct(Empresa $empresa, Saldo $saldo)
     {
         $this->empresa = $empresa;
-        $this->produto = $produto;
+        $this->saldo = $saldo;
     }
 
 
@@ -87,8 +87,10 @@ class EmpresaController extends Controller
         if (!$empresa) {
             return redirect()->route("empresa.$tipo.index", ["tipo" => $tipo]);
         }
+
+        $saldo = $this->saldo->where('empresa_id', $empresa->id)->where('status_id', "A")->latest()->first();
         $tipo = $empresa->tipo;
-        return view('admin.empresa.show', compact('empresa', 'tipo'));
+        return view('admin.empresa.show', compact('empresa', 'tipo', 'saldo'));
     }
 
     /**

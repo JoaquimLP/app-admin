@@ -26,6 +26,17 @@
                     <p><strong>Razão Social</strong>: {{$empresa->razao_social}}</p>
                     <p><strong>CNPJ|CPF</strong>: <span id="cpf_cnpj">{{maskCnpj($empresa->documento)}}</span></p>
                     <p><strong>IE/RG</strong>: {{$empresa->ie_rg}}</p>
+                    <p>
+                        <strong>Saldo à {{$tipo == "fornecedor" ? 'pagar' : 'receber'}}</strong>:
+                        @if (isset($saldo->valor))
+                            <span class="badge badge-{{$saldo->valor > 0 ? 'success' : 'danger'}} mb-2">{{maskDinheiro($saldo->valor ?? 0.00)}}</span>
+                        @else
+                            <span class="badge badge-light mb-2">{{maskDinheiro($saldo->valor ?? 0.00)}}</span>
+                        @endif
+                    </p>
+                    <p>
+                        <a href="#" class="btn btn-dark">Relatório de Saldo</a>
+                    </p>
                     <p><strong>Observação</strong>: {{$empresa->observacao}}</p>
                 </div>
                 <div class="col-sm-6">

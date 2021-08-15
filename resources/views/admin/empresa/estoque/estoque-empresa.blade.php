@@ -14,7 +14,12 @@
 
 </div>
 <div class="col-12 my-2">
-    <h4 class="my-1">Últimos Movimentação de estoque</h4>
+    @if ($tipo == "fornecedor")
+        <h5 class="my-1">Últimos itens comprado deste Fornecedor</h5>
+    @else
+        <h5 class="my-1">Últimos itens vendidos para este cliente</h5>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
