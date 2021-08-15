@@ -30,11 +30,11 @@ class Finaceiro extends Model
         $fim = $data['filterDateFinal'] ?? null;
 
         if (empty($inicio) && empty($fim)) {
-            return self::where('descricao', 'LIKE', "%{$filter}%")->with('empresa')->simplePaginate(15);
+            return self::where('descricao', 'LIKE', "%{$filter}%")->with('empresa')->latest()->simplePaginate(15);
         }elseif(empty($filter)){
-            return self::whereBetween('data_pagamento', [formatDateAndTimeIso($inicio), formatDateAndTimeIso($fim)])->with('empresa')->simplePaginate(15);
+            return self::whereBetween('data_pagamento', [formatDateAndTimeIso($inicio), formatDateAndTimeIso($fim)])->with('empresa')->latest()->simplePaginate(15);
         }else{
-            return self::whereBetween('data_pagamento', [formatDateAndTimeIso($inicio), formatDateAndTimeIso($fim)])->where('descricao', 'LIKE', "%{$filter}%")->with('empresa')->simplePaginate(15);
+            return self::whereBetween('data_pagamento', [formatDateAndTimeIso($inicio), formatDateAndTimeIso($fim)])->where('descricao', 'LIKE', "%{$filter}%")->with('empresa')->latest()->simplePaginate(15);
         }
 
     }

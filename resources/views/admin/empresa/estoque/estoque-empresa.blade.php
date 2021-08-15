@@ -14,11 +14,13 @@
 
 </div>
 <div class="col-12 my-2">
-    <h4 class="my-1">Últimos Lançamentos</h4>
+    <h4 class="my-1">Últimos Movimentação de estoque</h4>
     <table class="table">
         <thead>
             <tr>
                 <th scope="col">Produto</th>
+                <th scope="col">Data</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Quantidade em KG</th>
                 <th scope="col">Valor por KG</th>
                 <th scope="col">Total</th>
@@ -29,9 +31,11 @@
             @forelse ($empresa->estoque as $estoque)
                 <tr>
                     <td>{{$estoque->produto->nome}}</td>
+                    <td>{{formatDateAndTime($estoque->created_at)}}</td>
+                    <td><span class="badge badge-{{$estoque->tipo == 'E' ? 'success' : 'danger'}}">{{tipo($estoque->tipo)}}</span></td>
                     <td>{{maskDinheiro($estoque->qtd)}}</td>
                     <td>{{maskDinheiro($estoque->valor)}}</td>
-                    <td>R$ 555,50</td>
+                    <td>{{calcTotalProduto($estoque->qtd, $estoque->valor)}}</td>
                     <td>
                         <form action="{{route('estoque.destroy', $estoque->id)}}" method="post">
                             @method('DELETE')

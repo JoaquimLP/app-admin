@@ -21,7 +21,7 @@ class Produto extends Model
 
     public static function getProdutoAll()
     {
-        return self::where('status_id', "A")->simplePaginate(15);
+        return self::where('status_id', "A")->latest()->simplePaginate(15);
     }
 
     public static function getProduto($id)
@@ -31,11 +31,11 @@ class Produto extends Model
 
     public static function getProdutoSearch($filter = null)
     {
-        return self::where('id', $filter )->orWhere('nome', 'LIKE', "%{$filter}%")->where('status_id', "A")->simplePaginate(15);
+        return self::where('id', $filter )->orWhere('nome', 'LIKE', "%{$filter}%")->where('status_id', "A")->latest()->simplePaginate(15);
     }
 
     public static function getSerchProduto($nome = null)
     {
-        return self::where('nome', 'LIKE', "%{$nome}%")->where('status_id', "A")->get();
+        return self::where('nome', 'LIKE', "%{$nome}%")->where('status_id', "A")->latest()->get();
     }
 }

@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public static function getUserAll()
     {
-        return self::where('status_id', "A")->simplePaginate(15);
+        return self::where('status_id', "A")->latest()->simplePaginate(15);
     }
 
     public static function getUser($id)
@@ -55,6 +55,6 @@ class User extends Authenticatable
     public static function getUserSearch($filter = null)
     {
         return self::where('id', $filter )->orWhere('name', 'LIKE', "%{$filter}%")
-            ->orWhere('email', 'LIKE', "%{$filter}%")->where('status_id', "A")->simplePaginate(15);
+            ->orWhere('email', 'LIKE', "%{$filter}%")->where('status_id', "A")->latest()->simplePaginate(15);
     }
 }

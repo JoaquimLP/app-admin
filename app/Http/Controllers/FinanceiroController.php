@@ -19,7 +19,7 @@ class FinanceiroController extends Controller
 
     public function index()
     {
-        $financeiros = $this->financeiro->with('empresa')->simplePaginate();
+        $financeiros = $this->financeiro->with('empresa')->latest()->simplePaginate();
 
         return view('admin.financeiro.index', compact('financeiros'));
     }

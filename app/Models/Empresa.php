@@ -21,12 +21,16 @@ class Empresa extends Model
 
     public static function getTipo($tipo = null)
     {
-        return self::where('tipo', $tipo)->where('status_id', "A")->simplePaginate(15);
+        return self::where('tipo', $tipo)->where('status_id', "A")->latest()->simplePaginate(15);
     }
 
     public static function getClient($id)
     {
-        return self::where('id', $id)->where('status_id', "A")->with(['estoque', 'estoque.produto'])->first();
+        return self::where('id', $id)->where('status_id', "A")
+            ->with(['estoque' => function ($query){
+                $query->latest()->take(5);
+            },
+            'estoque.produto'])->first();
     }
 
     public function estoque()
@@ -36,7 +40,7 @@ class Empresa extends Model
 
     public static function getSerchTipo($tipo = null, $nome = null)
     {
-        return self::where('tipo', $tipo)->where('nome', 'LIKE', "%{$nome}%")->where('status_id', "A")->get();
+        return self::where('tipo', $tipo)->where('nome', 'LIKE', "%{$nome}%")->where('status_id', "A")->latest()->get();
     }
 
 }

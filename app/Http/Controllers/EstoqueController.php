@@ -20,8 +20,6 @@ class EstoqueController extends Controller
 
     public function produto(Request $request)
     {
-
-
         $produtos = Produto::getSerchProduto($request->nome);
 
         return ProdutoResource::collection($produtos);

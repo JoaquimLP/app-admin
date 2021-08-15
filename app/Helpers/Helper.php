@@ -1,12 +1,12 @@
 <?php
 
-function calcTotalProduto($qtd_atual, $qtd_pendente)
+function calcTotalProduto($qtb, $valor)
 {
     $total = 0;
 
-    $total = $qtd_atual + $qtd_pendente;
+    $total = $qtb * $valor;
 
-    return $total;
+    return number_format($total, 2, ',', '.');
 }
 
 function maskDinheiro($value)
