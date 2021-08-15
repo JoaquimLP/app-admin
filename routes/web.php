@@ -67,8 +67,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('auth')->group(function()
     Route::get('/empresa/financeiro', [FinanceiroController::class, 'index'])->name('financeiro.index');
     Route::get('/empresa/financeiro/create', [FinanceiroController::class, 'create'])->name('financeiro.create');
     Route::post('/empresa/financeiro/store', [FinanceiroController::class, 'store'])->name('financeiro.store');
-    Route::get('/empresa/financeiro/{id}/editar', [FinanceiroController::class, 'edit'])->name('financeiro.edit');
-    Route::put('/empresa/financeiro/{id}/update', [FinanceiroController::class, 'update'])->name('financeiro.update');
+    //Route::get('/empresa/financeiro/{id}/editar', [FinanceiroController::class, 'edit'])->name('financeiro.edit');
+    //Route::put('/empresa/financeiro/{id}/update', [FinanceiroController::class, 'update'])->name('financeiro.update');
     Route::get('/empresa/financeiro/{id}/show', [FinanceiroController::class, 'show'])->name('financeiro.show');
     Route::delete('/empresa/financeiro/{id}/destroy', [FinanceiroController::class, 'destroy'])->name('financeiro.destroy');
     Route::any('/empresa/financeiro/search', [FinanceiroController::class, 'search'])->name('financeiro.search');

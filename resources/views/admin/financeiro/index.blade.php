@@ -59,10 +59,10 @@
                             <td>{{$financeiro->empresa->nome}}</td>
                             <td>{{$financeiro->descricao}}</td>
                             <td>R$ {{maskDinheiro($financeiro->preco)}}</td>
-                            <td>{{formatDateAndTime($financeiro->data_pagamento)}}</td>
+                            <td>{{formatDateAndTime($financeiro->created_at)}}</td>
                             <td style="width: 200px">
                                 <a href="{{route('financeiro.show', $financeiro->id)}}"  class="btn btn-success">Detalhes</a>
-                                <a href="{{route('financeiro.edit', $financeiro->id)}}"  class="btn btn-warning">Editar</a>
+                                {{-- <a href="{{route('financeiro.edit', $financeiro->id)}}"  class="btn btn-warning">Editar</a> --}}
                             </td>
                         </tr>
                     @empty

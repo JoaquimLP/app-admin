@@ -21,6 +21,6 @@ class Estoque extends Model
 
     public function saldo()
     {
-        return $this->morphOne(Saldo::class, 'estoque');
+        return $this->morphOne(Saldo::class, 'movimento');
     }
 }

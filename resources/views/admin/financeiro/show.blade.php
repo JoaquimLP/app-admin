@@ -28,7 +28,7 @@
                     <p><strong>Descrição</strong>: {{$financeiro->descricao}}</p>
                 </div>
                 <div class="col-sm-6">
-                    <strong>Data da movimentação</strong>: {{formatDateAndTime($financeiro->data_pagamento)}}
+                    <strong>Data da movimentação</strong>: {{formatDateAndTime($financeiro->created_at)}}
                 </div>
             </div>
         </div>

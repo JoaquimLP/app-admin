@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFinaceirosTable extends Migration
+class CreateFinanceirosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateFinaceirosTable extends Migration
      */
     public function up()
     {
-        Schema::create('finaceiros', function (Blueprint $table) {
+        Schema::create('financeiros', function (Blueprint $table) {
             $table->id();
             $table->string('descricao')->nullable();
             //$table->double('qtd', 10,2)->nullable();
             //$table->double('valor_compra', 10,2)->nullable();
             $table->double('preco', 10,2)->nullable();
-            $table->date('data_pagamento')->nullable();
+            //$table->date('data_pagamento')->nullable();
             $table->enum('tipo', ['E', 'S']);
+            $table->enum('status_id', ['A', 'I'])->default("A");
             $table->unsignedBigInteger('empresa_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
@@ -37,6 +38,6 @@ class CreateFinaceirosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('finaceiros');
+        Schema::dropIfExists('financeiros');
     }
 }

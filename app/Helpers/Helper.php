@@ -83,10 +83,11 @@ function formatDateAndTime($value, $format = 'd/m/Y')
     return Carbon\Carbon::parse($value)->format($format);
 }
 
-function formatDateAndTimeIso($value, $format = 'Y-d-m')
+function formatDateAndTimeIso($value, $format = 'Y-m-d')
 {
     // Utiliza a classe de Carbon para converter ao formato de data ou hora desejado
-    return Carbon\Carbon::parse($value)->format($format);
+    $data = Carbon\Carbon::createFromFormat('d/m/Y', $value);
+    return Carbon\Carbon::parse($data)->format($format);
 }
 
 function tipo ($value)

@@ -27,7 +27,7 @@ class StoreUpdateFinanceiroRequest extends FormRequest
         return [
             'descricao' => "required|max:150|min:3",
             'preco' => "required",
-            'data_pagamento' => "required|date",
+            //'data_pagamento' => "required|date",
             'empresa_id' => "required|numeric",
             'tipo'  => ["required", Rule::in(['E', 'S']),],
         ];
@@ -41,7 +41,7 @@ class StoreUpdateFinanceiroRequest extends FormRequest
     public function validationData()
     {
         $data = $this->all();
-        $data['data_pagamento'] = formatDateAndTimeIso($data['data_pagamento']);
+        //$data['data_pagamento'] = formatDateAndTimeIso($data['data_pagamento']);
         $data['preco'] = str_replace(['.', ','], ['', '.'], $data['preco']);
 
         $this->replace($data);

@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
-use App\Models\Estoque;
-use App\Observers\FinanceiroEstoqueObserver;
+use App\Models\{
+    Estoque,
+    Financeiro
+};
+use App\Observers\{
+    FinanceiroEstoqueObserver,
+    MovimentoFinanceiro
+};
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Estoque::observe(FinanceiroEstoqueObserver::class);
+        Financeiro::observe(MovimentoFinanceiro::class);
     }
 }

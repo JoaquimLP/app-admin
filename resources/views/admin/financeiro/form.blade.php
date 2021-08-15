@@ -16,7 +16,7 @@
         </div>
     @enderror
 </div>
-<div class="col-md-3 my-1">
+{{-- <div class="col-md-3 my-1">
     <label for="data_pagamento" class="form-label">Data*</label>
     <input type="text" class="form-control date @error('data_pagamento') is-invalid @enderror" value="{{old('data_pagamento', isset($financeiro->data_pagamento) ? formatDateAndTime($financeiro->data_pagamento) : '')}}" placeholder="00/00/0000" name="data_pagamento" id="data_pagamento">
     @error('data_pagamento')
@@ -24,7 +24,7 @@
             {{ $message }}
         </div>
     @enderror
-</div>
+</div> --}}
 <div class="col-md-3 my-1">
     <label for="tipo" class="form-label">Tipo de movimentação*</label>
     <select name="tipo" id="tipo" class="form-control @error('tipo') is-invalid @enderror">
